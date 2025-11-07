@@ -242,24 +242,31 @@ def campeonato() -> None:
 def usuario_escolhe_jogada(n: int, m: int) -> int:
     """
     Função para usuário escolher jogada
-    
-    Args:
-        - m (int): valor máximo que usuário pode escolher
-        - n (int): o valor da quantidade de peças
-    Return:
-        - (int): o novo valor de quantidade peças após remoção
-    """
-    p = int(input('Qual o valor da sua jogada? '))
-    
-    while not (p <= m):
-        print('Jogada inválida, tente novamente')
-        p = int(input('Qual o valor da sua jogada? '))
 
-    if n > p:
-        n = n - p
-        return n
-    else:
-        return 0
+    Args:
+    - n (int): o valor da quantidade de peças
+    - m (int): valor máximo que usuário pode escolher
+    Return:
+    - (int): o novo valor de quantidade peças após remoção
+    """
+    while True:
+        try:
+            p = int(input('Qual o valor da sua jogada? '))
+
+            while not (p <= m):
+                print('Jogada inválida, tente novamente')
+                p = int(input('Qual o valor da sua jogada? '))
+
+            if p > 0:
+                if n > p:
+                    n = n - p
+                    return n
+                else:
+                    return 0
+            else:
+                print("Valor inválido. Tente novamente!")
+        except ValueError:
+            print("Valor inválido. Tente novamente!")
 
 def placar_jogador(jogador_1: str, jogador_2: str, p_jogador_1 : int , p_jogador_2 : int) -> int:
     """
